@@ -304,6 +304,10 @@ class LoaderManager(private val configFile: ConfigFile, private val internetMana
         if (logDirectory.exists()) {
             val latestLog = File(basepath + "logs/latest.log")
             if (latestLog.exists()) {
+                val previousLog = File(basepath + "logs/previous.log")
+                if (previousLog.exists()) {
+                    previousLog.delete();
+                }
                 latestLog.copyTo(File(basepath + "logs/previous.log"))
             }
         }
